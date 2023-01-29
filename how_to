@@ -1,0 +1,59 @@
+To start using this script, you'll need to do the following:
+
+Save the script to a file with a .py extension, e.g. newsletter_automation.py
+Make sure you have Python installed on your computer. You can check this by opening a terminal or command prompt and running the command python --version
+Create a CSV file with a list of subscribers, with headers "email" and rows should be the email addresses. Save the file in the same directory as the script and update the subscribers_file variable in the script with the name of the CSV file.
+Update the subject variable with the subject of the newsletter.
+Update the message variable with the message you want to send to the subscribers.
+Update the sender_email variable with the email address you want to send the newsletter from.
+Update the sender_password variable with the password of the sender email address
+Open a terminal or command prompt and navigate to the directory where the script and CSV file are located
+Run the script using the command python newsletter_automation.py
+
+How do i make a CSV file? what is that?
+
+A CSV (Comma Separated Values) file is a simple text file that contains data organized in a table, with each row representing a record and each column 
+representing a field. The columns are separated by commas, hence the name "Comma Separated Values".
+
+Here's an example of what a CSV file with subscriber email addresses might look like:
+
+email
+roffe@example.com
+lenny@example.com
+bengan@example.com
+
+To create a CSV file, you can use a spreadsheet software like Microsoft Excel or Google Sheets.
+
+Open the software and create a new file.
+In the first row, enter the headers "email"
+In the rows below, enter the email addresses of your subscribers.
+Save the file as a CSV file by going to File > Save As, and choosing the "CSV" option in the file type dropdown.
+You can also use any text editor to create the CSV file and make sure the file extension is ".csv"
+
+Once you have the CSV file ready, you'll need to update the script with the name of the file.
+You can find this line in the script: subscribers_file = 'subscribers.csv'
+Replace subscribers.csv with the name of your CSV file, for example, if the file name is "email_list.csv", you should replace subscribers.csv with email_list.csv
+
+Once you've done that, you can run the script and it will read the email addresses from the CSV file and send the newsletter to each subscriber in the list.
+
+And how do i actually make the newsletter?
+
+To include the actual newsletter content in the script, you'll need to create the content in a separate file, such as an HTML file, and then reference 
+that file in the script. Here's an example of how you might do that:
+
+Create an HTML file with the newsletter content. You can use a text editor or an HTML editor to create this file.
+Add the following line of code in the script, after the import statements:
+
+with open("newsletter.html", "r") as f:
+    newsletter_html = f.read()
+    
+This code opens the HTML file containing the newsletter content and reads it into a variable called newsletter_html.
+Then you need to add that variable to the email body, where you want to add the newsletter content.
+
+msg.attach(MIMEText(newsletter_html, 'html'))
+
+You should replace msg with the variable name you use for the email message.
+
+This will attach the contents of the HTML file as the body of the email message. Be sure to replace the file path of the HTML file with the correct path on your computer.
+
+You can also use other file types such as PDF and you can use a library like pdfkit to convert your HTML to pdf and attach it to the email.
